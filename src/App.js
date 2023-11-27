@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router,Switch,Route}from "react-router-dom";
 
-function App() {
+import Navbar from './NavbarComponent/HomeNavbar';
+import Gallery from './HomePages/Gallery';
+import Blogs from './HomePages/Blogs';
+import Programs from './HomePages/Programs';
+import GetStarted from './HomePages/Home';
+import Contact from './HomePages/Contact';
+import Login from './HomePages/Login';
+import CreateUserComponent from './HomePages/SignUp'
+
+import Admin from './AdminComponent/Admin';
+import Trainer from './TrainerComponent/Trainer';
+import Member from './MemberComponent/Member';
+
+
+
+
+
+
+const App = () => {
+  const dark=false
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+  
+
+<div className={dark?"dark":"light"}>
+     
+      <Navbar/>
+      
+      <Switch>
+      <Route  path="/getStarted" component={GetStarted}/> 
+      <Route  path="/gallery" component={Gallery}/>
+      <Route  path="/programs" component={Programs}/>
+      <Route  path="/blogs" component={Blogs}/>
+      <Route  path="/contact" component={Contact}/>
+      <Route  path="/login" component={Login}/>
+      <Route  path="/createuser" component={CreateUserComponent}/>
+      <Route  path="/admin" component={Admin}/>
+      <Route  path="/trainer" component={Trainer}/>
+      <Route  path="/member" component={Member}/>
+     
+
+     
+    
+      </Switch>
+
+
+   
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
